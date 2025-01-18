@@ -2,6 +2,16 @@
 
 ![FlowShare Banner](public/og-image.png)
 
+[![License](https://img.shields.io/github/license/hipnologo/FlowShare)](https://github.com/hipnologo/FlowShare/blob/main/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/hipnologo/FlowShare)](https://github.com/hipnologo/FlowShare/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/hipnologo/FlowShare)](https://github.com/hipnologo/FlowShare/network)
+[![GitHub issues](https://img.shields.io/github/issues/hipnologo/FlowShare)](https://github.com/hipnologo/FlowShare/issues)
+[![Build Status](https://img.shields.io/github/workflow/status/hipnologo/FlowShare/CI)](https://github.com/hipnologo/FlowShare/actions)
+[![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](https://github.com/hipnologo/FlowShare/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/hipnologo/FlowShare)](https://github.com/hipnologo/FlowShare/commits/main)
+[![codecov](https://codecov.io/gh/hipnologo/FlowShare/branch/main/graph/badge.svg)](https://codecov.io/gh/hipnologo/FlowShare)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/hipnologo/FlowShare/pulls)
+
 FlowShare is an open marketplace platform that enables automation enthusiasts to discover, share, and download workflows. Our platform makes it easy to browse, contribute, and implement automation solutions across various categories.
 
 ## 🌟 Features
