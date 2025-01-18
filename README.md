@@ -1,12 +1,12 @@
-# n8n-FlowShare: An Open-Source Marketplace for Automation Flows
+# FlowShare: An Open-Source Marketplace for Automation Flows
 
-![n8n FlowShare Banner](public/og-image.png)
+![FlowShare Banner](public/og-image.png)
 
-n8n-FlowShare is an open marketplace platform that enables automation enthusiasts to discover, share, and download n8n workflows. Our platform makes it easy to browse, contribute, and implement automation solutions across various categories.
+FlowShare is an open marketplace platform that enables automation enthusiasts to discover, share, and download workflows. Our platform makes it easy to browse, contribute, and implement automation solutions across various categories.
 
 ## 🌟 Features
 
-- **Browse Workflows**: Explore a curated collection of n8n automation workflows
+- **Browse Workflows**: Explore a curated collection of automation workflows such as n8n
 - **Share Your Workflows**: Upload and share your custom automation solutions
 - **Featured Categories**: Find workflows across categories like:
   - Email Integration
@@ -19,7 +19,7 @@ n8n-FlowShare is an open marketplace platform that enables automation enthusiast
 
 ## 🚀 Live Demo
 
-Visit our [Live Demo](https://n8n-flowshare.netlify.app) to explore the platform.
+Visit our [Live Demo](https://flowshare.vercel.app/) to explore the platform.
 
 ## 💻 Tech Stack
 
@@ -34,12 +34,12 @@ This project is built with modern web technologies:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/hipnologo/n8n-FlowShare.git
+git clone https://github.com/hipnologo/FlowShare.git
 ```
 
 2. Install dependencies:
 ```bash
-cd n8n-FlowShare
+cd FlowShare
 npm install
 ```
 3. Start the development server:
@@ -62,10 +62,21 @@ Please feel free to submit a pull request or create an issue.
 - User ratings and reviews
 - Advanced search capabilities
 
-## 📄 License
-- Project license will be published soon.
-
 ## 🙏 Acknowledgments
 - n8n community for inspiration and support
 - All contributors who share their workflows
 - shadcn/ui for the beautiful components
+
+## 📄 License
+
+FlowShare is licensed under the Apache License, Version 2.0. See [LICENSE](https://github.com/hipnologo/FlowShare/blob/main/LICENSE) for the full license text.
+
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
+Copyright (c) 2024 FlowShare
+
+You can use this software according to the terms and conditions of the Apache License, Version 2.0. You may obtain a copy of the License at:
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
