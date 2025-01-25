@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
-import Index from "./pages/Index";
+import Home from "./pages/Home"; // Renamed from Index
 import UploadPage from './pages/upload';
 import SignInPage from './pages/auth/signin';
 import SignUpPage from './pages/auth/signup';
@@ -22,7 +22,10 @@ const App = () => {
   useEffect(() => {
     const initAuth = async () => {
       try {
-        await supabase.auth.getSession();
+        const { data } = await supabase.auth.getSession();
+        console.log("Auth initialized:", data);
+      } catch (error) {
+        console.error("Auth error:", error);
       } finally {
         setIsLoading(false);
       }
@@ -31,13 +34,13 @@ const App = () => {
   }, []);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Loading authentication...</div>;
   }
 
   return (
-    <BrowserRouter>
+    <ErrorBoundary fallback={<div>Something went wrong</div>}>
       <QueryClientProvider client={queryClient}>
-        <ErrorBoundary fallback={<div>Something went wrong</div>}>
+        <BrowserRouter>
           <AuthProvider>
             <TooltipProvider>
               <DebugRouter />
@@ -45,7 +48,7 @@ const App = () => {
                 <Route path="/signin" element={<SignInPage />} />
                 <Route path="/signup" element={<SignUpPage />} />
                 <Route element={<ProtectedRoute />}>
-                  <Route path="/" element={<Index />} />
+                  <Route path="/" element={<Home />} />
                   <Route path="/upload" element={<UploadPage />} />
                 </Route>
                 <Route path="*" element={<Navigate to="/signin" />} />
@@ -54,9 +57,9 @@ const App = () => {
               <Sonner />
             </TooltipProvider>
           </AuthProvider>
-        </ErrorBoundary>
+        </BrowserRouter>
       </QueryClientProvider>
-    </BrowserRouter>
+    </ErrorBoundary>
   );
 };
 
