@@ -11,32 +11,53 @@ import SignUpPage from './pages/auth/signup';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import { ErrorBoundary } from 'react-error-boundary';
 import { DebugRouter } from './components/Debug';
+import { useState, useEffect } from 'react';
+import { supabase } from './lib/supabase';
 
 const queryClient = new QueryClient();
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
+const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const initAuth = async () => {
+      try {
+        await supabase.auth.getSession();
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    initAuth();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  return (
     <BrowserRouter>
-      <ErrorBoundary fallback={<div>Something went wrong</div>}>
-        <AuthProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <DebugRouter />
-            <Routes>
-              <Route path="/signin" element={<SignInPage />} />
-              <Route path="/signup" element={<SignUpPage />} />
-              <Route element={<ProtectedRoute />}>
-                <Route path="/" element={<Index />} />
-                <Route path="/upload" element={<UploadPage />} />
-              </Route>
-              <Route path="*" element={<Navigate to="/signin" />} />
-            </Routes>
-          </TooltipProvider>
-        </AuthProvider>
-      </ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <ErrorBoundary fallback={<div>Something went wrong</div>}>
+          <AuthProvider>
+            <TooltipProvider>
+              <DebugRouter />
+              <Routes>
+                <Route path="/signin" element={<SignInPage />} />
+                <Route path="/signup" element={<SignUpPage />} />
+                <Route element={<ProtectedRoute />}>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/upload" element={<UploadPage />} />
+                </Route>
+                <Route path="*" element={<Navigate to="/signin" />} />
+              </Routes>
+              <Toaster />
+              <Sonner />
+            </TooltipProvider>
+          </AuthProvider>
+        </ErrorBoundary>
+      </QueryClientProvider>
     </BrowserRouter>
-  </QueryClientProvider>
-);
+  );
+};
 
 export default App;

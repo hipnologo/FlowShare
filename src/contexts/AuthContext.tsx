@@ -16,6 +16,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isLoaded, setIsLoaded] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -32,6 +33,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     });
 
     return () => subscription.unsubscribe();
+  }, []);
+
+  useEffect(() => {
+    const initAuth = async () => {
+      try {
+        const { data } = await supabase.auth.getSession();
+        console.log("Auth session:", data);
+      } catch (error) {
+        console.error("Auth error:", error);
+      } finally {
+        setIsLoaded(true);
+      }
+    };
+    initAuth();
   }, []);
 
   const signIn = async (email: string, password: string) => {
@@ -58,6 +73,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     signUp,
     signOut,
   };
+
+  if (!isLoaded) {
+    return <div>Loading auth...</div>;
+  }
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
