@@ -1,13 +1,24 @@
 export interface Workflow {
-    id: string;
+  id: number;
+  user_id: string;
+  original_filename: string;
+  stored_filename: string;
+  metadata: {
     name: string;
-    creator: string;
     description: string;
     valueProposition: string;
     categories: string[];
-    downloads: number;
-    price: number;
-    fileName: string;
-  }
-  
-  export type WorkflowFormData = Omit<Workflow, 'id' | 'downloads' | 'fileName'>;
+  };
+  is_paid: boolean;
+  price: number;
+  created_at: string;
+  updated_at: string;
+}
+
+export type WorkflowFormData = {
+  name: string;
+  description: string;
+  valueProposition: string;
+  categories: string[];
+  price: number;
+};
